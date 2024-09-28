@@ -1,19 +1,16 @@
 
--- A
--- Write a functio that given the coefficients of a quadriatic a, b, and c will return how many roots the equation has
 
-numberNDroots :: Float -> Float -> Float -> Integer
-
--- B
--- Using your answer to the last question write a function that given the coefficients of the quadratic, a, b and c
--- will return haw many roots the equation has. In the cas that the equation has every number a root you should return the result 3.
-
-numberRoots :: Float -> Float -> Float -> Integer
-
--- C
--- Write definitions of the functions which return the smaller and larger real roots of the quadratic. 
--- In the case that the equation has no real roots or has all values as roots you should 
--- return zero as the result of each of the functions.
-
-smallerRoot :: Float-> Float-> Float-> Float
-largerRoot :: Float-> Float-> Float-> Float
+toRoman :: Integer -> String
+toRoman num
+    | num == 0 = ""
+    | num == 1 = "I"
+    | num < 4 = 'I' : toRoman (num - 1)
+    | num == 4 = 'I' : 'V' : toRoman (num - 4)
+    | num < 9 = 'V' : toRoman (num - 5)
+    | num == 9 = 'I' : 'X' : toRoman (num - 9)
+    | num < 40 = 'X' : toRoman (num - 10)
+    | num < 50 = 'X' : 'L' : toRoman (num - 40)
+    | num < 90 = 'L' : toRoman (num - 50)
+    | num < 100 = 'X' : 'C' : toRoman (num - 90)
+    | num == 100 = 'C' : toRoman (num - 100)
+    | otherwise = 'C' : toRoman (num - 100) 
