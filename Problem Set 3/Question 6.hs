@@ -11,3 +11,9 @@ data List a where
   deriving (Eq, Show)
 
 listSplit :: List (Either a b) -> (List a, List b)
+listSplit lst = listSplitHelper lst Empty Empty
+
+listSplitHelper :: List (Either a b) -> List a -> List b -> (List a, List b)
+listSplitHelper Empty ls rs = (ls, rs)
+listSplitHelper (Cons(Left a) lst) ls rs = listSplitHelper lst (Cons a ls) rs
+listSplitHelper (Cons(Right b) lst) ls rs = listSplitHelper lst ls (Cons b rs)
